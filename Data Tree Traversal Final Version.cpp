@@ -4,6 +4,15 @@
 #include <limits>
 using namespace std;
 
+bool validInput(const string& input){
+	if(input == "5" || input == "6" || input == "7" || input == "8" || input == "9" || input == "10" || input == "11" || input == "12" || input == "13" ||  input == "14" ||
+	  input == "15"){
+		return true;
+	}
+	else{
+		return false;
+	}
+}
 
 bool isNumeric(const string& str) {
     bool hasDecimal = false, hasDigit = false;
@@ -224,6 +233,11 @@ bool console(int check){
     cout << "\n---------------------------------\n";
     cout << "Input number of values (5-15): ";
     getline(cin,inputValues);
+    
+    while(validInput(inputValues) == false){
+    	cout<<endl<<"Invalid Input. Try Again: ";
+    	getline(cin,inputValues);
+	}
 	numValues = stoi(inputValues);
     while (numValues < 5 || numValues > 15) {
         cout << "Invalid input! Number of values must be between 5 and 15. Try again.\n";
