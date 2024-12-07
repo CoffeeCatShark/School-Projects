@@ -15,7 +15,7 @@ bool validInput(const string& input){
 }
 
 bool isNumeric(const string& str) {
-    bool hasDecimal = false, hasDigit = false;
+    bool hasDecimal = false, hasDigit = false, isPercent = false;
     int start = 0;
 
    
@@ -23,13 +23,19 @@ bool isNumeric(const string& str) {
         start = 1;
     }
 
+	
+
     for (int i = start; i < str.size(); i++) {
         if (str[i] == '.') {
             if (hasDecimal) return false;
             hasDecimal = true;
         } else if (isdigit(str[i])) {
-            hasDigit = true;
-        } else {
+		 hasDigit = true;
+		}
+	    else if(str[str.size()-1] == '%'){
+		hasDigit = true;
+        }
+		 else {
             return false;
         }
     }
