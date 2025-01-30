@@ -87,7 +87,21 @@ void merge(){
 	}
 }
 
-
+void sort(){
+	int trueMax = var.maxA+var.maxB;
+	for(int i=1;i<trueMax;i++){
+		int key = var.c[i];
+		int j = i - 1;
+		
+		while (j >= 0 && var.c[j] > key) {
+            var.c[j + 1] = var.c[j];
+            j = j - 1;
+        }
+        arr[j + 1] = key;
+	}
+	
+	
+}
 
 
 
