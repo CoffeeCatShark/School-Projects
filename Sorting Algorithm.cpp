@@ -70,21 +70,26 @@ void inputB(){
 }
 
 void merge(){
-	int temp;
-	for(int x=0;x<var.maxA;x++){
+	int temp =0, max=var.maxA+var.maxB;
+	int x=0;
+	while(x<var.maxA){
 		var.c[x] = var.a[x];
-		cout<<var.c[x];
 		x++;
-		x=temp;
+	}
+	cout<<"X VALUE: "<<x<<" "<<endl;
+	cout<<"MAX VALUE: "<<max<<" "<<endl;
+
+	while(x<max){
+		var.c[x]=var.b[temp];
+		temp++;
+		x++;
 	}
 	
-	for(int x=temp;x<var.maxA+var.maxB;x++){
-		var.c[x] = var.b[x];
-	}
 	
-	for(int x=0; x<var.maxA+var.maxB-1;x++){
-		cout<<var.c[x];
+	for(int x=0; x<var.maxA+var.maxB;x++){
+		cout<<var.c[x]<<" ";
 	}
+	cout<<endl;
 }
 
 void sort(){
@@ -93,14 +98,16 @@ void sort(){
 		int key = var.c[i];
 		int j = i - 1;
 		
-		while (j >= 0 && var.c[j] > key) {
+		while (j >= 0 && var.c[j] < key) {
             var.c[j + 1] = var.c[j];
             j = j - 1;
         }
-        arr[j + 1] = key;
+        var.c[j + 1] = key;
 	}
 	
-	
+	for(int x=0;x<trueMax;x++){
+		cout<<var.c[x]<<" ";
+	}
 }
 
 
@@ -110,7 +117,7 @@ int main(){
 	inputA();
 	inputB();
 	merge();
-
+	sort();
 	
 	
 	return 0;
