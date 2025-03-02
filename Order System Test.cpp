@@ -46,7 +46,7 @@ class Cart{
 	string name[10][10];
 	float price[10][10];
 	int quantity[10][10];
-
+	int id[10][10];
 	};
 		
 class Order: public Cart{
@@ -144,9 +144,10 @@ void loadOrder(){
 order.orderNum++;
 }
 
-void addCart(string x, float y){
+void addCart(string x, float y, int z){
 	cart.name[order.orderNum][global.x] = x;
 	cart.price[order.orderNum][global.x] = y;
+	cart.id[order.orderNum][global.x] = z;
 }
 
 void chooseProduct(){
@@ -161,7 +162,7 @@ void chooseProduct(){
 			//ADD CONDITIONAL LOOP TO CATCH ERROR	
 		
 	for(int i=0;i<global.x;i++){
-			if(input[global.x] == input[i]){
+			if(input[global.x] == cart.id[order.orderNum][i]){
 				cart.quantity[order.orderNum][i]++;
 				cout<<"Product Added Successfully"<<endl;
 				notDuplicate = false;
@@ -170,19 +171,19 @@ void chooseProduct(){
 		}
 			
 	if(input[global.x] == paper.showID() && notDuplicate == true ){	 
-				addCart(paper.name,paper.price);
+				addCart(paper.name,paper.price,paper.showID());
 				cart.quantity[order.orderNum][global.x]++;
 				cout<<"Product Added Successfully"<<endl;
 			}
 				
 				if(input[global.x] == eraser.showID() && notDuplicate == true){
-				addCart(eraser.name,eraser.price);
+				addCart(eraser.name,eraser.price,eraser.showID());
 				cart.quantity[order.orderNum][global.x]++;
 				cout<<"Product Added Successfully"<<endl;
 			}
 			
 				if(input[global.x] == pencil.showID() && notDuplicate == true){
-				addCart(pencil.name,pencil.price);
+				addCart(pencil.name,pencil.price,pencil.showID());
 				cart.quantity[order.orderNum][global.x]++;
 				cout<<"Product Added Successfully"<<endl;
 			}
@@ -210,6 +211,7 @@ int input;
 	cout<<"View Products[1]"<<endl;
 	cout<<"View Shopping Cart[2]"<<endl;
 	cout<<"View Order[3]"<<endl;
+	cout<<"Exit[0]"<<endl;
 	cout<<": ";
 
 	cin>>input;
