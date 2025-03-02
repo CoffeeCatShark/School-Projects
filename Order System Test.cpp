@@ -35,7 +35,7 @@ class Product{
 	}
 	
 	void showProd(){
-	cout<<prod_id<<"\t"<<name<<"\t"<<price<<endl;
+	cout<<prod_id<<"\t\t"<<name<<"\t\t"<<price<<endl;
 	}
 	
 	
@@ -76,10 +76,12 @@ class Order: public Cart{
 	
 
 void showProducts(){
-	cout<<"Product ID\nName\tPrice\t"<<endl;
+	cout<<"Product ID\tName\t\tPrice\t"<<endl;
 	paper.showProd();
 	eraser.showProd();
 	pencil.showProd();
+	
+chooseProduct();
 }
 
 
@@ -113,15 +115,17 @@ void askCheckout(){
 }
 
 void printOrder(){
-	for(int i=0;i<=order.orderNum;i++){
+	for(int i=0;i<order.orderNum;i++){
 	cout<<"Order ID: "<<order.orderID[i]<<endl;
 	cout<<"Name\tPrice\tQuantity"<<endl;
 		for(int x=0;x<global.stored_x[i];x++){
 
-			cout<<order.name[i][x]<<"/t"<<order.price[x][i]<<"\t"<<order.quantity[x][i]<<endl;
+			cout<<order.name[i][x]<<"\t"<<order.price[i][x]<<"\t"<<order.quantity[i][x]<<endl;
 			
 		}
 	}
+	
+menu();
 }
 
 void loadOrder(){
@@ -184,8 +188,9 @@ void chooseProduct(){
 			}
 			
 				else if(input[global.x] == 0){
-				global.x-=1;
+
 				notFinished = false;
+				break;
 				}
 			
 			if(notDuplicate == true){
@@ -239,6 +244,9 @@ int main(){
 	pencil.setID(103);
 	pencil.setPrice(12);
 	pencil.setName("Pencil");
+	
+	menu();
+	
 	
 	return 0;
 	
