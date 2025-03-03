@@ -74,8 +74,16 @@ class Order: public Cart{
 	void addCart();
 	void addQuantity();
 	void getAmount();
+	void banner();
+	void miniBanner();
+	
+void banner(){
+	cout<<endl<<"===================================="<<endl;
+}
 
-
+void miniBanner(){
+	cout<<endl<<"------------"<<endl;
+}
 void showProducts(){
 	cout<<"Product ID\tName\t\tPrice\t"<<endl;
 	paper.showProd();
@@ -87,11 +95,13 @@ chooseProduct();
 
 
 void viewCart(){
+	banner();
 	cout<<"Name\tPrice\tQuantity"<<endl;
 	printCart();
 	askCheckout();
 }
 void printCart(){
+
 		for(int i=0;i<global.x;i++){
 			cout<<cart.name[order.orderNum][i]<<"\t"<<cart.price[order.orderNum][i]<<"\t"<<cart.quantity[order.orderNum][i]<<endl;
 		}
@@ -116,6 +126,7 @@ void askCheckout(){
 }
 
 void printOrder(){
+banner();
 	for(int i=0;i<order.orderNum;i++){
 	cout<<"Order ID: "<<order.orderID[i]<<endl;
 	cout<<"Total Amount: "<<order.totalAmount[i]<<endl;
@@ -125,6 +136,7 @@ void printOrder(){
 			cout<<order.name[i][x]<<"\t"<<order.price[i][x]<<"\t"<<order.quantity[i][x]<<endl;
 			
 		}
+	miniBanner();
 	}
 	
 menu();
@@ -168,7 +180,13 @@ void chooseProduct(){
 		
 	cout<<"Enter the ID of the product you want to add in the shopping cart: ";
 	cin>>input[global.x];	
-			//ADD CONDITIONAL LOOP TO CATCH ERROR	
+			//ADD CONDITIONAL LOOP TO CATCH ERROR
+			while(input[global.x] != paper.showID() && input[global.x] != eraser.showID() && input[global.x] != pencil.showID() && input[global.x] != 0){
+				cin.clear();
+				cin.ignore();
+				cout<<"Error Input. Try Again: ";
+				cin>>input[global.x];
+			}	
 		
 	for(int i=0;i<global.x;i++){
 			if(input[global.x] == cart.id[order.orderNum][i]){
@@ -216,6 +234,7 @@ menu();
 
 
 void menu(){
+banner();
 int input;
 	cout<<"View Products[1]"<<endl;
 	cout<<"View Shopping Cart[2]"<<endl;
