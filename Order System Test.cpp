@@ -51,7 +51,7 @@ class Cart{
 		
 class Order: public Cart{
 	public:
-	float totalAmount;
+	float totalAmount[10];
 	int orderID[10];
 	int orderNum;
 };
@@ -73,7 +73,8 @@ class Order: public Cart{
 	void menu();
 	void addCart();
 	void addQuantity();
-	
+	void getAmount();
+
 
 void showProducts(){
 	cout<<"Product ID\tName\t\tPrice\t"<<endl;
@@ -117,6 +118,7 @@ void askCheckout(){
 void printOrder(){
 	for(int i=0;i<order.orderNum;i++){
 	cout<<"Order ID: "<<order.orderID[i]<<endl;
+	cout<<"Total Amount: "<<order.totalAmount[i]<<endl;
 	cout<<"Name\tPrice\tQuantity"<<endl;
 		for(int x=0;x<global.stored_x[i];x++){
 
@@ -138,7 +140,14 @@ void loadOrder(){
 		order.quantity[order.orderNum][i] = cart.quantity[order.orderNum][i];
 	}
 	
+getAmount();
 	
+}	
+
+void getAmount(){
+	for(int i=0;i<global.stored_x[order.orderNum];i++){
+		order.totalAmount[order.orderNum] += order.price[order.orderNum][i]*order.quantity[order.orderNum][i];
+	}
 	
 	
 order.orderNum++;
