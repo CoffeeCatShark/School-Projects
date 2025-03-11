@@ -49,25 +49,23 @@ class Employee{
 		cin>>y;
 		while(cin.fail()){
 			cin.clear();
-			cin.ignore(100,'\n');
+			cin.ignore(1000,'\n');
 			cout<<"Error: ID should only be a digit."<<endl;
-			cout<<"Input: ";
 			cin>>y;
 		}
-		//ADD CONDITIONS
 		isRunning = true;
 		while(isRunning){
 			for(int i=0;i<global.x;i++){
 				if(y == _id.idNum[i]){
 					cout<<"Error: ID has already been registered. Use a different value."<<endl;
 					cout<<"Input: ";
+					cin.ignore();
 					cin>>y;
 					while(cin.fail()){
 				cin.clear();
-				cin.ignore(100,'\n');
+				cin.ignore(1000,'\n');
 				cout<<"Error: ID should only be a digit."<<endl;
 				cout<<"Input: ";
-
 				cin>>y;
 				}
 				}
@@ -75,10 +73,11 @@ class Employee{
 		isRunning = false;
 		}
 		cout<<"Salary: ";
+		cin.ignore();
 		cin>>z;
 		while(cin.fail()){
 				cin.clear();
-				cin.ignore(100,'\n');
+				cin.ignore(1000,'\n');
 				cout<<"Error: ID should only be a digit."<<endl;
 				cout<<"Input: ";
 				cin>>z;
@@ -123,13 +122,14 @@ class PartTime: public Employee{
 	void _setHours(){
 		int x;
 		cout<<"Hours Worked: ";
+		cin.ignore();
 		cin>>x;
 		while(cin.fail()){
 				cin.clear();
 				cin.ignore(100,'\n');
 				cout<<"Error: ID should only be a digit."<<endl;
 				cout<<"Input: ";
-
+				x = 0;
 				cin>>x;
 				}
 		setHours(x);
@@ -164,13 +164,14 @@ class Contractual: public Employee{
 		void _setProjects(){
 		int x;
 		cout<<"Projects: ";
+		cin.ignore();
 		cin>>x;
 		while(cin.fail()){
 				cin.clear();
 				cin.ignore(100,'\n');
 				cout<<"Error: ID should only be a digit."<<endl;
 				cout<<"Input: ";
-
+				x = 0;
 				cin>>x;
 				}
 		setProjects(x);
@@ -278,7 +279,12 @@ int input;
 	cout<<"[5] - Exit"<<endl;
 cout<<"Input: ";
 cin>>input;
-
+while(input != 1 && input != 2 && input != 3 && input != 4 && input !=5 ||cin.fail()){
+	cin.clear();
+	cin.ignore(1000,'\n');
+	cout<<"Error Input Try Again: ";
+	cin>>input;
+}
 switch(input){
 	
 	case 1: 
