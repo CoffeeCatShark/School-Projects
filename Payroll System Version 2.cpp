@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string>
 using namespace std;
 
 struct Global{
@@ -34,8 +35,9 @@ class Employee{
 	void setAll(){
 		string x;
 		int y,z;
+		cin.ignore();
 		cout<<"Name: ";
-		cin>>x;
+		getline(cin,x);
 		cout<<"ID: ";
 		cin>>y;
 		cout<<"Salary: ";
@@ -212,12 +214,12 @@ int input;
 
 	cout<<"\t\tMenu"<<endl;
 	cout<<"============================"<<endl;
-	cout<<"1 - Full-Time Employee"<<endl;
-	cout<<"2 - Part-Time Employee"<<endl;
-	cout<<"3 - Contractual Employee"<<endl;
-	cout<<"4 - Display Payroll Report"<<endl;
-	cout<<"5 - Exit"<<endl;
-
+	cout<<"[1] - Full-Time Employee"<<endl;
+	cout<<"[2] - Part-Time Employee"<<endl;
+	cout<<"[3] - Contractual Employee"<<endl;
+	cout<<"[4] - Display Payroll Report"<<endl;
+	cout<<"[5] - Exit"<<endl;
+cout<<"Input: ";
 cin>>input;
 
 switch(input){
@@ -247,11 +249,6 @@ switch(input){
 }
 
 int main(){
-
-
 menu();
-
-
-
-	return 0;
+return 0;
 }
