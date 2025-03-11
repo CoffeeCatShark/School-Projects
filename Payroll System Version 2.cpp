@@ -94,7 +94,7 @@ class PartTime: public Employee{
 	cout<<"Employee: "<<getName()<<" (ID: "<<getID()<<")"<<endl;
 	cout<<"Hourly Wage: "<<"$"<<getSalary()<<endl;
 	cout<<"Hours Worked: "<<getHours()<<endl;
-	cout<<"TOTAL Salary: "<<totalSalary>>endl;
+	cout<<"TOTAL Salary: "<<totalSalary<<endl;
 	}
 	
 };
