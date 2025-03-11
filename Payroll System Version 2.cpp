@@ -9,7 +9,6 @@ struct Global{
 	int contractual = 0;
 };
 
-
 struct AuthID{
 	int idNum[30];
 };
