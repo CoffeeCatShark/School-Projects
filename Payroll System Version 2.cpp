@@ -88,7 +88,6 @@ class Employee{
 		setSalary(z);
 	}
 	
-	
 virtual void display() = 0;
 	
 };
