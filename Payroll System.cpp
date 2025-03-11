@@ -78,6 +78,8 @@ void display() override{
 };
 
 
+
+
 void menu(){
 	cout<<"Menu"<<endl;
 	cout<<"1 - Full-Time Employee"<<endl;
@@ -89,6 +91,19 @@ void menu(){
 
 
 int main(){
+	FullTime e1("Jane Doe", 101, 150000);
+	PartTime e2("James Bond", 102, 15000, 8);
+	Contractual e3 ("James Leo", 103, 20000, 3);
+	FullTime e4("Lebron James",104,100000);
+	PartTime e5("Sun Goku", 105, 16000, 7);
+	Contractual e6("Naruto", 106, 16000, 9);
+	
+	Employee* employees[] = {&e1, &e2, &e3, &e4, &e5, &e6};
+	FullTime* fulltime[] = {&e1, &e4};
+	PartTime* parttime[] = {&e2, &e5};
+	Contractual* contractual[] = {&e3, &e6};
+	
+		
 	menu();
 	return 0;
 }
