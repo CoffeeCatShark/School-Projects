@@ -24,6 +24,8 @@ class Employee{
 	int id;
 	int totalSalary;
 	public: 
+				Employee(){ name = "NULL"; salary = 0, employeeCount = 0, id = 000, totalSalary = 0;
+					}
 	void setName(string x){name = x;}
 	void setID(int x){id = x;}
 	void setSalary(int x){salary = x;}
