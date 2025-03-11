@@ -93,9 +93,20 @@ class Contractual: public Employee{
 	void setProjects(int x){projects = x;}
 	
 	int getProjects(){return projects;}
+	void display() override {
+	cout<<"Employee: "<<getName()<<" (ID: "<<getID()<<")"<<endl;
+	cout<<"Fixed Monthly Salary: "<<"$"<<getSalary()<<endl;
+	}
+	
 };
 
 int main(){
+	FullTime fullTime[10];
+	PartTime partTime[10];
+	Contractual contractual[10];
+	Employee employee[30]
+
+
 
 	return 0;
 }
