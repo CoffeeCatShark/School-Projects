@@ -8,16 +8,23 @@ struct Global{
 	int partTime = 0;
 	int contractual = 0;
 };
+
+
+struct AuthID{
+	int idNum[30];
+};
+
+AuthID _id;
 Global global;
 class Employee{
 	private:
+	bool isRunning = true;
 	int salary;
 	int employeeCount;
 	string name;
 	int id;
 	int totalSalary;
 	public: 
-
 	void setName(string x){name = x;}
 	void setID(int x){id = x;}
 	void setSalary(int x){salary = x;}
@@ -40,9 +47,44 @@ class Employee{
 		getline(cin,x);
 		cout<<"ID: ";
 		cin>>y;
+		while(cin.fail()){
+			cin.clear();
+			cin.ignore(100,'\n');
+			cout<<"Error: ID should only be a digit."<<endl;
+			cout<<"Input: ";
+			cin>>y;
+		}
+		//ADD CONDITIONS
+		isRunning = true;
+		while(isRunning){
+			for(int i=0;i<global.x;i++){
+				if(y == _id.idNum[i]){
+					cout<<"Error: ID has already been registered. Use a different value."<<endl;
+					cout<<"Input: ";
+					cin>>y;
+					while(cin.fail()){
+				cin.clear();
+				cin.ignore(100,'\n');
+				cout<<"Error: ID should only be a digit."<<endl;
+				cout<<"Input: ";
+
+				cin>>y;
+				}
+				}
+			}
+		isRunning = false;
+		}
 		cout<<"Salary: ";
 		cin>>z;
+		while(cin.fail()){
+				cin.clear();
+				cin.ignore(100,'\n');
+				cout<<"Error: ID should only be a digit."<<endl;
+				cout<<"Input: ";
+				cin>>z;
+				}
 		setName(x);
+		_id.idNum[global.x] = y;
 		setID(y);
 		setSalary(z);
 	}
@@ -82,6 +124,14 @@ class PartTime: public Employee{
 		int x;
 		cout<<"Hours Worked: ";
 		cin>>x;
+		while(cin.fail()){
+				cin.clear();
+				cin.ignore(100,'\n');
+				cout<<"Error: ID should only be a digit."<<endl;
+				cout<<"Input: ";
+
+				cin>>x;
+				}
 		setHours(x);
 	}
 	void setHours(int x){hoursWorked = x;}
@@ -96,7 +146,7 @@ class PartTime: public Employee{
 	cout<<"Employee: "<<getName()<<" (ID: "<<getID()<<")"<<endl;
 	cout<<"Hourly Wage: "<<"$"<<getSalary()<<endl;
 	cout<<"Hours Worked: "<<getHours()<<endl;
-	cout<<"TOTAL Salary: "<<totalSalary<<endl;
+	cout<<"TOTAL Salary: $"<<totalSalary<<endl;
 	}
 	
 };
@@ -115,6 +165,14 @@ class Contractual: public Employee{
 		int x;
 		cout<<"Projects: ";
 		cin>>x;
+		while(cin.fail()){
+				cin.clear();
+				cin.ignore(100,'\n');
+				cout<<"Error: ID should only be a digit."<<endl;
+				cout<<"Input: ";
+
+				cin>>x;
+				}
 		setProjects(x);
 	}
 	void setProjects(int x){projects = x;}
@@ -130,7 +188,7 @@ class Contractual: public Employee{
 	cout<<"Employee: "<<getName()<<" (ID: "<<getID()<<")"<<endl;
 	cout<<"Contract Payment Per Project: "<<"$"<<getSalary()<<endl;
 	cout<<"Projects Completed: "<<getProjects()<<endl;
-	cout<<"TOTAL Salary: "<<totalSalary<<endl;
+	cout<<"TOTAL Salary: $"<<totalSalary<<endl;
 	}
 	
 };
@@ -203,7 +261,6 @@ cout<<"\t\tContractual Employees"<<endl;
 		contractual[z].display();
 		cout<<endl;
 	}
-	
 cout<<"========================================="<<endl;
 menu();
 }
