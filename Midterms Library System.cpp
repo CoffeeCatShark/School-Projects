@@ -24,14 +24,14 @@ class Book {
 			cout<<"ISBN: "<<isbn<<endl;
 			cout<<"Title: "<<title<<endl;
 			cout<<"Author: "<<author<<endl;
-			cout<<"Edition"<<edition<<endl;
+			cout<<"Edition: "<<edition<<endl;
 			cout<<"Publication: "<<publication<<endl;
 			cout<<"Category: "<<category<<endl;
 			cout<<"============================"<<endl;
 		}
 
 		string getID(){return id;}
-		
+		string getCategory(){return category;}
 		bool checkCategory(){
 			cout<<"WIP";
 			return true;
@@ -118,6 +118,10 @@ class Library{
 	}
 	
 	void deleteBook(string x){
+		if(count == 0){
+		cout<<"No Books Found Registered.";
+		return;
+	}
 		bool foundBook = false;	
 		for(int i=0;i<count;i++){
 			if(x == books[i]->getID()){
@@ -203,6 +207,30 @@ class Library{
 				break;
 			}
 				
+		}
+	}
+	
+	void displayFiction(){
+		if(count == 0){
+			cout<<"No Books Registered"<<endl;
+			return;
+		}
+		for(int i=0;i<count;i++){
+			if(books[i]->getCategory() == "FICTION"){
+				books[i]->display();
+			}
+		}
+	}
+	
+	void displayNonFiction(){
+		if(count == 0){
+			cout<<"No Books Registered"<<endl;
+			return;
+		}
+		for(int i=0;i<count;i++){
+			if(books[i]->getCategory() == "NONFICTION"){
+				books[i]->display();
+			}
 		}
 	}
 	
@@ -329,6 +357,10 @@ string getPublication(){
 }
 
 void searchBook(Library& library){
+		if(library.getCount() == 0){
+		cout<<"No Books Found Registered.";
+		return;
+	}
 string input;
 	cout<<"Input Book ID: ";
 	getline(cin,input);
@@ -357,6 +389,29 @@ void editBook(Library& library){
 	else
 	cout<<"Book ID Not Found."<<endl;
 }
+
+void viewByCategory(Library& library){
+	string input;
+	cout<<"Category: ";
+	getline(cin,input);
+	//VALIDATION ALL CAPS
+	while(input != "FICTION" || input != "NONFICTION"){
+		cout<<"Error: Category Not Found."<<endl;
+		cout<<"Input: ";
+		getline(cin,input);
+	}
+	
+	if(input == "FICTION"){
+		library.displayFiction();
+	}
+	else
+		library.displayNonFiction();
+	
+}
+
+
+
+
 bool menu(){
 
 int input;
@@ -368,7 +423,7 @@ int input;
 	cout<<"[5] - View Books by Category"<<endl;
 	cout<<"[6] - View All Books"<<endl;
 	cout<<"[7] - Exit"<<endl;
-
+	cout<<"Input: ";
 cin>>input;
 
 	switch(input){
@@ -396,6 +451,18 @@ cin>>input;
 		}
 		case 4:{
 			deleteBook(library);
+			break;
+		}
+		case 5:{
+			viewByCategory(library);
+			break;
+		}
+		case 6:{
+			library.displayLibrary();
+			break;
+		}
+		case 7:{
+			return false;
 			break;
 		}
 	}
