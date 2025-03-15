@@ -32,6 +32,12 @@ class Book {
 
 		string getID(){return id;}
 		string getCategory(){return category;}
+		string getISBN(){return isbn;}
+		string getTitle(){return title;}
+		string getAuthor(){return author;}
+		string getEdition(){return edition;}
+		string getPublication(){return publication;}
+		
 		bool checkCategory(){
 			cout<<"WIP";
 			return true;
@@ -363,6 +369,7 @@ void searchBook(Library& library){
 	}
 string input;
 	cout<<"Input Book ID: ";
+	cin.ignore();
 	getline(cin,input);
 	library.findBook(input);
 }
@@ -370,6 +377,7 @@ string input;
 void deleteBook(Library& library){
 	string input;
 	cout<<"Input Book ID: ";
+	cin.ignore();
 	getline(cin,input);
 	library.deleteBook(input);
 }
@@ -393,6 +401,7 @@ void editBook(Library& library){
 void viewByCategory(Library& library){
 	string input;
 	cout<<"Category: ";
+	cin.ignore();
 	getline(cin,input);
 	//VALIDATION ALL CAPS
 	while(input != "FICTION" || input != "NONFICTION"){
