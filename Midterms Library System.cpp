@@ -138,7 +138,7 @@ class Library{
 		for(int i=0;i<count;i++){
 			if(x == books[i]->getID()){
 				books[i]->display();
-				key = i;
+				key = books[i]->getID();
 				foundBook = true;
 			}
 			if(foundBook == false){
@@ -146,12 +146,12 @@ class Library{
 				return;
 			}
 		}
-		int n = sizeof(books) / sizeof(books[0]);
 			cout<<"WORK IN PROGRESS -- still needs to add remove function"<<endl;
 			//www.geeksforgeeks.org/how-to-remove-an-element-from-array-in-cpp/
 			for(int i=0;i<count;i++){
-				
+	
 				if(books[i]->getID() == key){
+								cout<<"TEST";
 					count = count - 1;
 					for(int j=i;j<count;j++){
 						books[j]->editID(books[j+1]->getID());
