@@ -44,32 +44,26 @@ class Book {
 		}
 		void editID(string x){
 			id = x;
-			cout<<"Edit Successful"<<endl;
 		}
 		
 		void editTitle(string x){
 			title = x;
-			cout<<"Edit Successful"<<endl;
 		}
 		void editISBN(string x){
 			isbn = x;
-			cout<<"Edit Successful"<<endl;
 		}
 		void editAuthor(string x){
 			author = x;
-			cout<<"Edit Successful"<<endl;
 		}
 		void editEdition(string x){
 			edition = x;
-			cout<<"Edit Successful"<<endl;
 		}
 		void editPublication(string x){
 			publication = x;
-			cout<<"Edit Successful"<<endl;
 		}
 		void editCategory(string x){
 			category = x;
-			cout<<"Edit Successful"<<endl;
+		
 		}
 		
 		
@@ -147,11 +141,10 @@ class Library{
 			}
 		}
 			cout<<"WORK IN PROGRESS -- still needs to add remove function"<<endl;
-			//www.geeksforgeeks.org/how-to-remove-an-element-from-array-in-cpp/
+
 			for(int i=0;i<count;i++){
 	
 				if(books[i]->getID() == key){
-								cout<<"TEST";
 					count = count - 1;
 					for(int j=i;j<count;j++){
 						books[j]->editID(books[j+1]->getID());
@@ -162,6 +155,7 @@ class Library{
 						books[j]->editPublication(books[j+1]->getPublication());
 						books[j]->editTitle(books[j+1]->getTitle());
 					}
+					cout<<endl<<"Deletion Successful."<<endl;
 				}
 				
 			}
@@ -204,36 +198,42 @@ class Library{
 				cout<<"Enter New ISBN: ";
 				getline(cin,input);
 				books[key]->editISBN(input);
+				cout<<endl<<"Edit Successful"<<endl;
 				break;
 			}
 			case 2:{
 				cout<<"Enter New Title: ";
 				getline(cin,input);
 				books[key]->editTitle(input);
+				cout<<endl<<"Edit Successful"<<endl;
 				break;
 			}
 			case 3:{
 				cout<<"Enter New Author: ";
 				getline(cin,input);
 				books[key]->editAuthor(input);
+				cout<<endl<<"Edit Successful"<<endl;
 				break;
 			}
 			case 4:{
 				cout<<"Enter New Edition: ";
 				getline(cin,input);
 				books[key]->editEdition(input);
+				cout<<endl<<"Edit Successful"<<endl;
 				break;
 			}
 			case 5:{
 				cout<<"Enter New Publication: ";
 				getline(cin,input);
 				books[key]->editPublication(input);
+				cout<<endl<<"Edit Successful"<<endl;
 				break;
 			}
 			case 6:{
 				cout<<"Enter New Category: "; 
 				getline(cin,input);
 				books[key]->editCategory(input);
+				cout<<endl<<"Edit Successful"<<endl;
 				break;
 			}
 				
