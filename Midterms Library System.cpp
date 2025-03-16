@@ -42,6 +42,11 @@ class Book {
 			cout<<"WIP";
 			return true;
 		}
+		void editID(string x){
+			id = x;
+			cout<<"Edit Successful"<<endl;
+		}
+		
 		void editTitle(string x){
 			title = x;
 			cout<<"Edit Successful"<<endl;
@@ -124,6 +129,7 @@ class Library{
 	}
 	
 	void deleteBook(string x){
+		string key;
 		if(count == 0){
 		cout<<"No Books Found Registered.";
 		return;
@@ -132,6 +138,7 @@ class Library{
 		for(int i=0;i<count;i++){
 			if(x == books[i]->getID()){
 				books[i]->display();
+				key = i;
 				foundBook = true;
 			}
 			if(foundBook == false){
@@ -139,9 +146,26 @@ class Library{
 				return;
 			}
 		}
-		
+		int n = sizeof(books) / sizeof(books[0]);
 			cout<<"WORK IN PROGRESS -- still needs to add remove function"<<endl;
-			//https://www.geeksforgeeks.org/how-to-remove-an-element-from-array-in-cpp/
+			//www.geeksforgeeks.org/how-to-remove-an-element-from-array-in-cpp/
+			for(int i=0;i<count;i++){
+				
+				if(books[i]->getID() == key){
+					count = count - 1;
+					for(int j=i;j<count;j++){
+						books[j]->editID(books[j+1]->getID());
+						books[j]->editAuthor(books[j+1]->getAuthor());
+						books[j]->editCategory(books[j+1]->getCategory());
+						books[j]->editEdition(books[j+1]->getEdition());
+						books[j]->editISBN(books[j+1]->getISBN());
+						books[j]->editPublication(books[j+1]->getPublication());
+						books[j]->editTitle(books[j+1]->getTitle());
+					}
+				}
+				
+			}
+			
 	}
 		
 	bool validBook(string x){
@@ -404,7 +428,7 @@ void viewByCategory(Library& library){
 	cin.ignore();
 	getline(cin,input);
 	//VALIDATION ALL CAPS
-	while(input != "FICTION" || input != "NONFICTION"){
+	while(input != "FICTION" && input != "NONFICTION"){
 		cout<<"Error: Category Not Found."<<endl;
 		cout<<"Input: ";
 		getline(cin,input);
