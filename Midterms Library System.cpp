@@ -179,6 +179,7 @@ class Library{
 	
 	void editBook(string input){
 	int key;
+	bool valid = false;
 				for(int i=0;i<count;i++){
 					if(books[i]->getID() == input){
 						key = i;
@@ -236,7 +237,15 @@ class Library{
 			case 6:{
 				cout<<"Enter New Category: "; 
 				cin.ignore();
+				while(!valid){
+				cout<<"Enter Book Category: ";
 				getline(cin,input);
+				if(input != "FICTION" && input != "NONFICTION"){
+				cout<<"Error: Category must be either FICTION or NONFICTION"<<endl;
+				}
+				else
+				valid = true;
+			}
 				books[key]->editCategory(input);
 				cout<<endl<<"Edit Successful"<<endl;
 				break;
@@ -276,18 +285,17 @@ Library library;
 string getCategory(Library& library){
 	string category;
 	bool valid = false;
-	
-	while(!valid){
-		cout<<"Enter Book Category: ";
-		cin.ignore();
-		getline(cin,category);
-		
+		cin.ignore();									//ADD ALLCAPS MODIFIER										
+		while(!valid){
+			cout<<"Enter Book Category: ";
+			getline(cin,category);
+			if(category != "FICTION" && category != "NONFICTION"){
+				cout<<"Error: Category must be either FICTION or NONFICTION"<<endl;
+			}
+			else
+			valid = true;
+		}
 														//ADD CONDITIONALS
-		
-		
-		valid = true;
-	}
-		//ADD BOOL FOR YES NO
 	return category;
 }
 
@@ -449,11 +457,13 @@ void viewByCategory(Library& library){
 	}
 	
 	if(input == "FICTION"){
+		cout<<endl<<"\tFICTION CATEGORY"<<endl;
 		library.displayFiction();
 	}
-	else
+	else if (input == "NONFICTION"){
+		cout<<endl<<"\tNONFICTION CATEGORY"<<endl;
 		library.displayNonFiction();
-	
+		}
 }
 
 
