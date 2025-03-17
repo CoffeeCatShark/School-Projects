@@ -63,7 +63,6 @@ class Book {
 		}
 		void editCategory(string x){
 			category = x;
-		
 		}
 		
 		
@@ -196,6 +195,7 @@ class Library{
 		switch(_input){
 			case 1:{
 				cout<<"Enter New ISBN: ";
+				cin.ignore();
 				getline(cin,input);
 				books[key]->editISBN(input);
 				cout<<endl<<"Edit Successful"<<endl;
@@ -203,6 +203,7 @@ class Library{
 			}
 			case 2:{
 				cout<<"Enter New Title: ";
+				cin.ignore();
 				getline(cin,input);
 				books[key]->editTitle(input);
 				cout<<endl<<"Edit Successful"<<endl;
@@ -210,6 +211,7 @@ class Library{
 			}
 			case 3:{
 				cout<<"Enter New Author: ";
+				cin.ignore();
 				getline(cin,input);
 				books[key]->editAuthor(input);
 				cout<<endl<<"Edit Successful"<<endl;
@@ -217,6 +219,7 @@ class Library{
 			}
 			case 4:{
 				cout<<"Enter New Edition: ";
+				cin.ignore();
 				getline(cin,input);
 				books[key]->editEdition(input);
 				cout<<endl<<"Edit Successful"<<endl;
@@ -224,6 +227,7 @@ class Library{
 			}
 			case 5:{
 				cout<<"Enter New Publication: ";
+				cin.ignore();
 				getline(cin,input);
 				books[key]->editPublication(input);
 				cout<<endl<<"Edit Successful"<<endl;
@@ -231,6 +235,7 @@ class Library{
 			}
 			case 6:{
 				cout<<"Enter New Category: "; 
+				cin.ignore();
 				getline(cin,input);
 				books[key]->editCategory(input);
 				cout<<endl<<"Edit Successful"<<endl;
@@ -399,6 +404,10 @@ string input;
 }
 
 void deleteBook(Library& library){
+	if(library.bookCount() == 0){
+		cout<<endl<<"Library is Empty."<<endl;
+		return;
+	}
 	string input;
 	cout<<"Input Book ID: ";
 	cin.ignore();
@@ -423,6 +432,11 @@ void editBook(Library& library){
 }
 
 void viewByCategory(Library& library){
+	if(library.getCount() == 0){
+	cout<<"No Books Currently Registered.";
+	return;
+	}
+	
 	string input;
 	cout<<"Category: ";
 	cin.ignore();
