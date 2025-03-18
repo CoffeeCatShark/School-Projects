@@ -4,7 +4,6 @@
 #include <limits>
 using namespace std;
 
-
 bool isValidName(const string& name) {			//PROBABLY ADD AT PUBLISHER AND AUTHOR
     for (char ch : name) {
         if (!isalpha(ch) && ch != ' ') {
@@ -558,9 +557,16 @@ int _input;
         }
         
 	_input = stoi(input);
-	if(_input < 1 || _input > 7 ){
+	while(_input < 1 || _input > 7 ){
 		cout<<"ERROR: Invalid Input. Input Must only Be 1 - 7"<<endl;
-		menu();
+		cout<<"Input: ";
+		getline(cin,input);
+		while (!isDigits(input) || input.empty()) {
+            cout << "ERROR: Invalid input. Please enter a valid number.\n";
+            cout<<"Input: ";
+			getline(cin,input);
+        }
+    _input = stoi(input);
 	}
 
 	switch(_input){
