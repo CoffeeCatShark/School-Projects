@@ -317,11 +317,6 @@ class Library{
 			case 4:{
 				cout<<"Enter New Edition: ";
 				getline(cin,input);
-				while(input.empty()){
-					cout<<"Error: No Input Detected"<<endl;
-					cout<<"New Input: ";
-					getline(cin,input);
-				}
 				books[key]->editEdition(capital(input));
 				cout<<endl<<"Edit Successful"<<endl;
 				break;
