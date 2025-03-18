@@ -156,6 +156,7 @@ class Library{
 	
 	void deleteBook(string x){
 		string key;
+		string _input;
 		if(count == 0){
 		cout<<"No Books Found Registered.";
 		return;
@@ -173,7 +174,19 @@ class Library{
 			}
 		}
 			cout<<"Do you Want to Delete This Book? "<<endl;
-		
+			cout<<"Input: ";
+			getline(cin,_input);
+			_input = capital(_input);
+			while(_input != "YES" && _input != "NO"){
+				cout<<"Invalid Input. Try again"<<endl;
+				cout<<"Input: ";
+				getline(cin,_input);
+				_input = capital(_input);
+			}
+			if(_input == "NO"){
+				cout<<"Deletion Cancelled.";
+				return;
+			}
 															//ADD YES OR NO OPTION 
 			for(int i=0;i<count;i++){
 	
