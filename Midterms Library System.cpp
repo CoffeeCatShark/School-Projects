@@ -315,9 +315,8 @@ class Library{
 				break;
 			}
 			case 6:{
-				cout<<"Enter New Category: "; 
 				while(!valid){
-				cout<<"Enter Book Category: ";
+				cout<<"Enter New Book Category: ";
 				getline(cin,input);
 				input = capital(input);
 				if(input != "FICTION" && input != "NONFICTION"){
