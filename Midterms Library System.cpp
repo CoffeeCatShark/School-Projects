@@ -258,7 +258,7 @@ class Library{
 	int _input;
 	cout<<"Input: ";
 	getline(cin,x);
-	while (!isDigits(x) || input.empty()) {
+	while (!isDigits(x) || x.empty()) {
             cout << "ERROR: Invalid input. Please enter a valid number.\n";
             cout<<"Input: ";
 			cin>>x;
@@ -269,7 +269,7 @@ class Library{
 		cout<<"Error: Input Must Only Be 1 - 6"<<endl;
 		cout<<"Input: ";
 		getline(cin,x);
-		while (!isDigits(x) || input.empty()) {
+		while (!isDigits(x) || x.empty()) {
             cout << "ERROR: Invalid input. Please enter a valid number.\n";
             cout<<"Input: ";
 			cin>>x;
@@ -277,11 +277,15 @@ class Library{
 	_input = stoi(x);		
 	}
 	
-								
 		switch(_input){
 			case 1:{
 				cout<<"Enter New ISBN: ";
 				getline(cin,input);
+				while(input.empty()){
+					cout<<"Error: No Input Detected"<<endl;
+					cout<<"New Input: ";
+					getline(cin,input);
+				}
 				books[key]->editISBN(capital(input));
 				cout<<endl<<"Edit Successful"<<endl;
 				break;
@@ -289,6 +293,11 @@ class Library{
 			case 2:{
 				cout<<"Enter New Title: ";
 				getline(cin,input);
+				while(input.empty()){
+					cout<<"Error: No Input Detected"<<endl;
+					cout<<"New Input: ";
+					getline(cin,input);
+				}
 				books[key]->editTitle(capital(input));
 				cout<<endl<<"Edit Successful"<<endl;
 				break;
@@ -296,6 +305,11 @@ class Library{
 			case 3:{
 				cout<<"Enter New Author: ";
 				getline(cin,input);
+				while(input.empty()){
+					cout<<"Error: No Input Detected"<<endl;
+					cout<<"New Input: ";
+					getline(cin,input);
+				}
 				books[key]->editAuthor(capital(input));
 				cout<<endl<<"Edit Successful"<<endl;
 				break;
@@ -303,6 +317,11 @@ class Library{
 			case 4:{
 				cout<<"Enter New Edition: ";
 				getline(cin,input);
+				while(input.empty()){
+					cout<<"Error: No Input Detected"<<endl;
+					cout<<"New Input: ";
+					getline(cin,input);
+				}
 				books[key]->editEdition(capital(input));
 				cout<<endl<<"Edit Successful"<<endl;
 				break;
@@ -310,6 +329,11 @@ class Library{
 			case 5:{
 				cout<<"Enter New Publication: ";
 				getline(cin,input);
+				while(input.empty()){
+					cout<<"Error: No Input Detected"<<endl;
+					cout<<"New Input: ";
+					getline(cin,input);
+				}
 				books[key]->editPublication(capital(input));
 				cout<<endl<<"Edit Successful"<<endl;
 				break;
@@ -318,6 +342,11 @@ class Library{
 				while(!valid){
 				cout<<"Enter New Book Category: ";
 				getline(cin,input);
+				while(input.empty()){
+					cout<<"Error: No Input Detected"<<endl;
+					cout<<"New Input: ";
+					getline(cin,input);
+				}
 				input = capital(input);
 				if(input != "FICTION" && input != "NONFICTION"){
 				cout<<"Error: Category must be either FICTION or NONFICTION"<<endl;
@@ -410,6 +439,7 @@ string getValidID(Library& library){
 		id = capital(id);
 		if(id.empty()){
 			cout<<"No ID Input Detected: Try Again"<<endl;
+			continue;
 		}
 		if(library.isDuplicateID(id)){
 			cout<<"Duplicate ID: Try Again"<<endl;			
@@ -429,7 +459,10 @@ string getISBN(){
 	while(!valid){
 		cout<<"Enter ISBN Value: ";
 		getline(cin,isbn);
-		
+		if(isbn.empty()){
+			cout<<"Error: No ISBN Input Detected"<<endl;
+			continue;
+		}
 		
 		valid = true;
 	}
@@ -445,6 +478,11 @@ string getTitle(){
 	while(!valid){
 		cout<<"Enter Book Title: ";
 		getline(cin,title);
+		if(title.empty()){
+			cout<<"Error: No Book Title Detected"<<endl;
+			continue;
+		}
+		
 		
 		valid = true;
 	}
@@ -493,7 +531,13 @@ string getPublication(){
 	while(!valid){
 		cout<<"Enter Book Publication: ";
 		getline(cin,publication);
+		if(publication.empty()){
+			cout<<"Error: No Publication Input Detected"<<endl;
+			continue;
+		}
+		
 		publication = capital(publication);
+		
 		
 		valid = true;
 	}
@@ -627,6 +671,7 @@ int _input;
 		
 		Book* book = new Book(id,isbn,title,author,edition,publication,category);
 		library.addBook(book);
+		buffer();
 		break;
 	}
 		case 2:{
