@@ -38,7 +38,6 @@ string capital(string input){
 }
 
 
-
 class Book {
 	private:
 		string id;			//ALPHANUMERIC ALL CAPS ONLY
