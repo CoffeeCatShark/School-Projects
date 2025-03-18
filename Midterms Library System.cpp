@@ -106,7 +106,14 @@ class Library{
 	private:
 		Book* books[100];
 	int count = 0;
+	int fictionCount = 0;
+	int nonFictionCount = 0;
 	public: 
+	void addFiction(){fictionCount+= 1;}
+	void addNonFiction(){nonFictionCount += 1;}
+	void lessFiction(){fictionCount -= 1;}
+	void lessNonFiction(){nonFictionCount -= 1;}
+
 	int getCount(){
 		return count;
 	}
@@ -191,6 +198,13 @@ class Library{
 			for(int i=0;i<count;i++){
 	
 				if(books[i]->getID() == key){
+					if(books[i]->getCategory()=="FICTION"){
+						fictionCount -= 1;
+					}
+				else if(books[i]->getCategory() == "NONFICTION"){
+						nonFictionCount -=1;
+					}
+					
 					count = count - 1;
 					for(int j=i;j<count;j++){
 						books[j]->editID(books[j+1]->getID());
@@ -312,6 +326,20 @@ class Library{
 				else
 				valid = true;
 			}
+								if(books[key]->getCategory() == "FICTION"){
+									if(input == "NONFICTION"){
+										fictionCount -= 1;
+										nonFictionCount += 1;
+									}
+								}
+				
+								if(books[key]->getCategory() == "NONFICTION"){
+									if(input == "FICTION"){
+										fictionCount += 1;
+										nonFictionCount -= 1;
+									}
+								}
+				
 				books[key]->editCategory(capital(input));
 				cout<<endl<<"Edit Successful"<<endl;
 				break;
@@ -321,7 +349,7 @@ class Library{
 	}
 	
 	void displayFiction(){
-		if(count == 0){
+		if(count == 0 || fictionCount == 0){
 			cout<<"No Books Registered"<<endl;
 			return;
 		}
@@ -333,7 +361,7 @@ class Library{
 	}
 	
 	void displayNonFiction(){
-		if(count == 0){
+		if(count == 0 || nonFictionCount == 0){
 			cout<<"No Books Registered"<<endl;
 			return;
 		}
@@ -362,6 +390,13 @@ string getCategory(Library& library){
 			else
 			valid = true;
 		}
+		if(category == "FICTION"){
+			library.addFiction();
+		}
+		if(category == "NONFICTION"){
+			library.addNonFiction();
+		}
+		
 														//ADD CONDITIONALS
 	return category;
 }
