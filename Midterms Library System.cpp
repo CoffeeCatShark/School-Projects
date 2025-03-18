@@ -408,6 +408,9 @@ string getValidID(Library& library){
 		cout<<"Enter ID Value: ";
 		getline(cin,id);
 		id = capital(id);
+		if(id.empty()){
+			cout<<"No ID Input Detected: Try Again"<<endl;
+		}
 		if(library.isDuplicateID(id)){
 			cout<<"Duplicate ID: Try Again"<<endl;			
 		}
@@ -456,8 +459,8 @@ string getAuthor(){
 	while(!valid){
 		cout<<"Enter Book Author: ";
 		getline(cin,author);
-		while(!isValidName(author)){
-			cout<<"Error: Invalid Input. No Special Characters on Author Name."<<endl;
+		while(!isValidName(author) || author.empty()){
+			cout<<"Error: Invalid Input on Author Name."<<endl;
 			cout<<"Input: ";
 			getline(cin,author);
 		}
