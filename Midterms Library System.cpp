@@ -101,6 +101,7 @@ class Book {
 };
 
 
+
 class Library{
 	private:
 		Book* books[100];
@@ -227,8 +228,6 @@ class Library{
 	cin>>x;
 	while (!isDigits(x) || input.empty()) {
             cout << "ERROR: Invalid input. Please enter a valid number.\n";
-            cin.clear();
-            cin.ignore(numeric_limits<streamsize>::max(), '\n');
             cout<<"Input: ";
 			cin>>x;
         }
@@ -327,8 +326,6 @@ string getCategory(Library& library){
 			category = capital(category);
 			if(category != "FICTION" && category != "NONFICTION"){
 				cout<<"Error: Category must be either FICTION or NONFICTION"<<endl;
-				cin.clear();
-				cin.ignore();
 			}
 			else
 			valid = true;
