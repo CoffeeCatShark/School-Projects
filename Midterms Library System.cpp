@@ -317,6 +317,7 @@ class Library{
 Library library;
 
 
+
 string getCategory(Library& library){
 	string category;
 	bool valid = false;
@@ -334,6 +335,7 @@ string getCategory(Library& library){
 														//ADD CONDITIONALS
 	return category;
 }
+
 
 string getValidID(Library& library){
 	string id;
@@ -353,6 +355,7 @@ string getValidID(Library& library){
 	id = capital(id);
 	return id;
 }
+
 
 string getISBN(){
 	string isbn;
