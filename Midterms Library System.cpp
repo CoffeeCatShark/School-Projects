@@ -22,6 +22,11 @@ bool isDigits(const string& str) {
     return true;
 }
 
+void buffer(){
+	cout<<endl<<"Press any key and Enter to Continue"<<endl;
+	cin.ignore();
+}
+
 string capital(string input){
 	string _input;
 	
