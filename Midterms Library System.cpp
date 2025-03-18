@@ -4,6 +4,7 @@
 #include <limits>
 using namespace std;
 
+
 bool isValidName(const string& name) {			//PROBABLY ADD AT PUBLISHER AND AUTHOR
     for (char ch : name) {
         if (!isalpha(ch) && ch != ' ') {
@@ -357,6 +358,7 @@ string getValidID(Library& library){
 	while(!valid){
 		cout<<"Enter ID Value: ";
 		getline(cin,id);
+		id = capital(id);
 		if(library.isDuplicateID(id)){
 			cout<<"Duplicate ID: Try Again"<<endl;			
 		}
@@ -365,7 +367,6 @@ string getValidID(Library& library){
 		else
 		valid = true;
 	}
-	id = capital(id);
 	return id;
 }
 
@@ -396,9 +397,6 @@ string getTitle(){
 		cout<<"Enter Book Title: ";
 		getline(cin,title);
 		
-														//ADD CONDITIONALS
-		
-		
 		valid = true;
 	}
 	title = capital(title);
@@ -412,10 +410,12 @@ string getAuthor(){
 	while(!valid){
 		cout<<"Enter Book Author: ";
 		getline(cin,author);
+		while(!isValidName(author)){
+			cout<<"Error: Invalid Input. No Special Characters on Author Name."<<endl;
+			cout<<"Input: ";
+			getline(cin,author);
+		}
 		author = capital(author);
-		
-														//ADD CONDITIONALS
-		
 		
 		valid = true;
 	}
