@@ -5,6 +5,7 @@
 using namespace std;
 
 
+
 bool isValidName(const string& name) {			//PROBABLY ADD AT PUBLISHER AND AUTHOR
     for (char ch : name) {
         if (!isalpha(ch) && ch != ' ') {
@@ -37,6 +38,7 @@ string capital(string input){
 
 	return input;
 }
+
 
 
 class Book {
