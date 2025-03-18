@@ -538,8 +538,6 @@ int _input;
 	
 	while (!isDigits(input) || input.empty()) {
             cout << "ERROR: Invalid input. Please enter a valid number.\n";
-            cin.clear();
-            cin.ignore(numeric_limits<streamsize>::max(), '\n');
             cout<<"Input: ";
 			getline(cin,input);
         }
