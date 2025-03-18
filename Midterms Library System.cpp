@@ -216,6 +216,7 @@ class Library{
 		bool foundBook = false;	
 		for(int i=0;i<count;i++){
 			if(x == books[i]->getID()){
+				cout<<endl<<"---------"<<endl;
 				books[i]->display();
 				foundBook = true;	
 			}
@@ -235,6 +236,7 @@ class Library{
 						key = i;
 					}
 				}
+		cout<<"Edit Book: "<<endl;
 		cout<<"[1] - ISBN"<<endl;
 		cout<<"[2] - Title"<<endl;
 		cout<<"[3] - Author"<<endl;
@@ -243,13 +245,28 @@ class Library{
 		cout<<"[6] - Category"<<endl;
 	string x;
 	int _input;
-	cin>>x;
+	cout<<"Input: ";
+	getline(cin,x);
 	while (!isDigits(x) || input.empty()) {
             cout << "ERROR: Invalid input. Please enter a valid number.\n";
             cout<<"Input: ";
 			cin>>x;
         }
-	_input = stoi(x);										
+	_input = stoi(x);			
+	
+	while(_input < 1 || _input > 6){
+		cout<<"Error: Input Must Only Be 1 - 6"<<endl;
+		cout<<"Input: ";
+		getline(cin,x);
+		while (!isDigits(x) || input.empty()) {
+            cout << "ERROR: Invalid input. Please enter a valid number.\n";
+            cout<<"Input: ";
+			cin>>x;
+        }
+	_input = stoi(x);		
+	}
+	
+								
 		switch(_input){
 			case 1:{
 				cout<<"Enter New ISBN: ";
@@ -493,9 +510,9 @@ void editBook(Library& library){
 	string input;
 	cout<<"Input Book ID: ";
 	getline(cin,input);
+	input = capital(input);
 	if(library.validBook(input)==true){
 	library.editBook(input);
-	buffer();
 	}
 	else
 	cout<<"Book ID Not Found."<<endl;
