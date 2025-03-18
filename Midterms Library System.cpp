@@ -24,6 +24,7 @@ bool isDigits(const string& str) {
 
 void buffer(){
 	cout<<endl<<"Press any key and Enter to Continue"<<endl;
+	cin.ignore();
 	cin.get();
 }
 
@@ -449,6 +450,7 @@ string getPublication(){
 void searchBook(Library& library){
 		if(library.getCount() == 0){
 		cout<<"No Books Found Registered.";
+		buffer();
 		return;
 	}
 string input;
@@ -457,11 +459,13 @@ string input;
 	getline(cin,input);
 	input = capital(input);
 	library.findBook(input);
+	buffer();
 }
 
 void deleteBook(Library& library){
 	if(library.bookCount() == 0){
 		cout<<endl<<"Library is Empty."<<endl;
+		buffer();
 		return;
 	}
 	string input;
@@ -475,6 +479,7 @@ void deleteBook(Library& library){
 void editBook(Library& library){
 	if(library.getCount() == 0){
 		cout<<"No Books Found Registered.";
+		buffer();
 		return;
 	}
 	string input;
@@ -483,14 +488,17 @@ void editBook(Library& library){
 	getline(cin,input);
 	if(library.validBook(input)==true){
 	library.editBook(input);
+	buffer();
 	}
 	else
 	cout<<"Book ID Not Found."<<endl;
+	buffer();
 }
 
 void viewByCategory(Library& library){
 	if(library.getCount() == 0){
 	cout<<"No Books Currently Registered.";
+	buffer();
 	return;
 	}
 	
@@ -508,10 +516,12 @@ void viewByCategory(Library& library){
 	if(input == "FICTION"){
 		cout<<endl<<"\tFICTION CATEGORY"<<endl;
 		library.displayFiction();
+		buffer();
 	}
 	else if (input == "NONFICTION"){
 		cout<<endl<<"\tNONFICTION CATEGORY"<<endl;
 		library.displayNonFiction();
+		buffer();
 		}
 }
 
@@ -531,7 +541,7 @@ int _input;
 	cout<<"[6] - View All Books"<<endl;
 	cout<<"[7] - Exit"<<endl;
 	cout<<"Input: ";
-	cin>>input;
+	getline(cin,input);
 	
 	while (!isDigits(input) || input.empty()) {
             cout << "ERROR: Invalid input. Please enter a valid number.\n";
@@ -575,6 +585,7 @@ int _input;
 		}
 		case 6:{
 			library.displayLibrary();
+			buffer();
 			break;
 		}
 		case 7:{
