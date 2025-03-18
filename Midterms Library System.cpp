@@ -312,6 +312,7 @@ class Library{
 			case 4:{
 				cout<<"Enter New Edition: ";
 				getline(cin,input);
+				
 				books[key]->editEdition(capital(input));
 				cout<<endl<<"Edit Successful"<<endl;
 				break;
