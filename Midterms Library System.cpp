@@ -23,9 +23,9 @@ bool isDigits(const string& str) {
 }
 
 void buffer(){
+	string input;
 	cout<<endl<<"Press any key and Enter to Continue"<<endl;
-	cin.ignore();
-	cin.get();
+	getline(cin,input);
 }
 
 string capital(string input){
@@ -236,7 +236,6 @@ class Library{
 		switch(_input){
 			case 1:{
 				cout<<"Enter New ISBN: ";
-				cin.ignore();
 				getline(cin,input);
 				books[key]->editISBN(capital(input));
 				cout<<endl<<"Edit Successful"<<endl;
@@ -244,7 +243,6 @@ class Library{
 			}
 			case 2:{
 				cout<<"Enter New Title: ";
-				cin.ignore();
 				getline(cin,input);
 				books[key]->editTitle(capital(input));
 				cout<<endl<<"Edit Successful"<<endl;
@@ -252,7 +250,6 @@ class Library{
 			}
 			case 3:{
 				cout<<"Enter New Author: ";
-				cin.ignore();
 				getline(cin,input);
 				books[key]->editAuthor(capital(input));
 				cout<<endl<<"Edit Successful"<<endl;
@@ -260,7 +257,6 @@ class Library{
 			}
 			case 4:{
 				cout<<"Enter New Edition: ";
-				cin.ignore();
 				getline(cin,input);
 				books[key]->editEdition(capital(input));
 				cout<<endl<<"Edit Successful"<<endl;
@@ -268,7 +264,6 @@ class Library{
 			}
 			case 5:{
 				cout<<"Enter New Publication: ";
-				cin.ignore();
 				getline(cin,input);
 				books[key]->editPublication(capital(input));
 				cout<<endl<<"Edit Successful"<<endl;
@@ -276,7 +271,6 @@ class Library{
 			}
 			case 6:{
 				cout<<"Enter New Category: "; 
-				cin.ignore();
 				while(!valid){
 				cout<<"Enter Book Category: ";
 				getline(cin,input);
@@ -326,14 +320,15 @@ Library library;
 
 string getCategory(Library& library){
 	string category;
-	bool valid = false;
-		cin.ignore();									//ADD ALLCAPS MODIFIER										
+	bool valid = false;									//ADD ALLCAPS MODIFIER										
 		while(!valid){
 			cout<<"Enter Book Category: ";
 			getline(cin,category);
 			category = capital(category);
 			if(category != "FICTION" && category != "NONFICTION"){
 				cout<<"Error: Category must be either FICTION or NONFICTION"<<endl;
+				cin.clear();
+				cin.ignore();
 			}
 			else
 			valid = true;
@@ -455,7 +450,6 @@ void searchBook(Library& library){
 	}
 string input;
 	cout<<"Input Book ID: ";
-	cin.ignore();
 	getline(cin,input);
 	input = capital(input);
 	library.findBook(input);
@@ -470,7 +464,6 @@ void deleteBook(Library& library){
 	}
 	string input;
 	cout<<"Input Book ID: ";
-	cin.ignore();
 	getline(cin,input);
 	input = capital(input);
 	library.deleteBook(input);
@@ -484,7 +477,6 @@ void editBook(Library& library){
 	}
 	string input;
 	cout<<"Input Book ID: ";
-	cin.ignore();
 	getline(cin,input);
 	if(library.validBook(input)==true){
 	library.editBook(input);
@@ -504,7 +496,6 @@ void viewByCategory(Library& library){
 	
 	string input;
 	cout<<"Category: ";
-	cin.ignore();
 	getline(cin,input);
 	input = capital(input);
 	while(input != "FICTION" && input != "NONFICTION"){
@@ -526,12 +517,7 @@ void viewByCategory(Library& library){
 }
 
 
-
-
-bool menu(){
-
-string input;
-int _input;
+void display(){
 	cout<<"\n===================="<<endl;
 	cout<<"[1] - Add Book"<<endl;
 	cout<<"[2] - Edit Book"<<endl;
@@ -540,6 +526,13 @@ int _input;
 	cout<<"[5] - View Books by Category"<<endl;
 	cout<<"[6] - View All Books"<<endl;
 	cout<<"[7] - Exit"<<endl;
+}
+
+bool menu(){
+
+string input;
+int _input;
+	display();
 	cout<<"Input: ";
 	getline(cin,input);
 	
@@ -548,9 +541,14 @@ int _input;
             cin.clear();
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
             cout<<"Input: ";
-			cin>>input;
+			getline(cin,input);
         }
+        
 	_input = stoi(input);
+	if(_input < 1 || _input > 7 ){
+		cout<<"ERROR: Invalid Input. Input Must only Be 1 - 7"<<endl;
+		menu();
+	}
 
 	switch(_input){
 		case 1: {
