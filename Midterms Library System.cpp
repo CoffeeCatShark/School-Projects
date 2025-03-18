@@ -566,6 +566,7 @@ void viewByCategory(Library& library){
 		cout<<"Error: Category Not Found."<<endl;
 		cout<<"Input: ";
 		getline(cin,input);
+		input = capital(input);
 	}
 	
 	if(input == "FICTION"){
