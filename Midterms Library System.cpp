@@ -4,6 +4,8 @@
 #include <limits>
 using namespace std;
 
+
+
 bool isValidName(const string& name) {
     for (char ch : name) {
         if (!isalpha(ch) && ch != ' ') {
@@ -24,7 +26,7 @@ bool isDigits(const string& str) {
 
 void buffer(){
 	cout<<endl<<"Press any key and Enter to Continue"<<endl;
-	cin.ignore();
+	cin.get();
 }
 
 string capital(string input){
@@ -319,7 +321,7 @@ class Library{
 			}
 		}
 	}
-	
+	buffer();
 };
 Library library;
 
