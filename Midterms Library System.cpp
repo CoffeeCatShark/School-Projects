@@ -383,7 +383,7 @@ string getISBN(){
 		
 		valid = true;
 	}
-	
+	isbn = capital(isbn);
 
 	return isbn;
 }
@@ -401,6 +401,7 @@ string getTitle(){
 		
 		valid = true;
 	}
+	title = capital(title);
 	return title;
 }
 
