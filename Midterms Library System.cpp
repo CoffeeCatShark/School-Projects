@@ -4,13 +4,14 @@
 #include <limits>
 using namespace std;
 
-bool isValidName(const string& name) {			//PROBABLY ADD AT PUBLISHER AND AUTHOR
+
+bool isValidName(const string& name) {		
     for (char ch : name) {
         if (!isalpha(ch) && ch != ' ') {
             return false;
         }
     }
-    return !name.empty(); // Ensure the name is not empty
+    return !name.empty(); 
 }
 
 bool isDigits(const string& str) {
@@ -193,7 +194,7 @@ class Library{
 				cout<<"Deletion Cancelled.";
 				return;
 			}
-															//ADD YES OR NO OPTION 
+
 			for(int i=0;i<count;i++){
 	
 				if(books[i]->getID() == key){
@@ -378,7 +379,7 @@ Library library;
 
 string getCategory(Library& library){
 	string category;
-	bool valid = false;									//ADD ALLCAPS MODIFIER										
+	bool valid = false;											
 		while(!valid){
 			cout<<"Enter Book Category: ";
 			getline(cin,category);
@@ -396,7 +397,6 @@ string getCategory(Library& library){
 			library.addNonFiction();
 		}
 		
-														//ADD CONDITIONALS
 	return category;
 }
 
@@ -412,7 +412,6 @@ string getValidID(Library& library){
 		if(library.isDuplicateID(id)){
 			cout<<"Duplicate ID: Try Again"<<endl;			
 		}
-														//ADD CONDITIONALS
 		
 		else
 		valid = true;
@@ -428,8 +427,6 @@ string getISBN(){
 	while(!valid){
 		cout<<"Enter ISBN Value: ";
 		getline(cin,isbn);
-		
-														//ADD CONDITIONALS
 		
 		
 		valid = true;
@@ -480,7 +477,6 @@ string getEdition(){
 		cout<<"Enter Book Edition: ";
 		getline(cin,edition);
 		edition = capital(edition);
-														//ADD CONDITIONALS
 		
 		
 		valid = true;
@@ -496,9 +492,6 @@ string getPublication(){
 		cout<<"Enter Book Publication: ";
 		getline(cin,publication);
 		publication = capital(publication);
-		
-														//ADD CONDITIONALS
-		
 		
 		valid = true;
 	}
@@ -579,6 +572,7 @@ void viewByCategory(Library& library){
 		buffer();
 		}
 }
+
 
 
 void display(){
