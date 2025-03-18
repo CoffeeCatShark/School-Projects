@@ -4,6 +4,7 @@
 #include <limits>
 using namespace std;
 
+
 bool isValidName(const string& name) {
     for (char ch : name) {
         if (!isalpha(ch) && ch != ' ') {
