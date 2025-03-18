@@ -71,10 +71,6 @@ class Book {
 		string getEdition(){return edition;}
 		string getPublication(){return publication;}
 		
-		bool checkCategory(){
-			cout<<"WIP";
-			return true;
-		}
 		void editID(string x){
 			id = x;
 		}
@@ -316,6 +312,8 @@ class Library{
 			case 4:{
 				cout<<"Enter New Edition: ";
 				getline(cin,input);
+				
+				
 				books[key]->editEdition(capital(input));
 				cout<<endl<<"Edit Successful"<<endl;
 				break;
