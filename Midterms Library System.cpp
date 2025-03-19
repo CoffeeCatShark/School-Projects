@@ -256,7 +256,7 @@ class Library{
 	while (!isDigits(x) || x.empty()) {
             cout << "ERROR: Invalid input. Please enter a valid number.\n";
             cout<<"Input: ";
-			cin>>x;
+			getline(cin,x);
         }
 	_input = stoi(x);			
 	
@@ -267,7 +267,7 @@ class Library{
 		while (!isDigits(x) || x.empty()) {
             cout << "ERROR: Invalid input. Please enter a valid number.\n";
             cout<<"Input: ";
-			cin>>x;
+			getline(cin,x);
         }
 	_input = stoi(x);		
 	}
@@ -574,8 +574,7 @@ void editBook(Library& library){
 	if(library.validBook(input)==true){
 	library.editBook(input);
 	}
-	else
-	cout<<"Book ID Not Found."<<endl;
+	
 	buffer();
 }
 
