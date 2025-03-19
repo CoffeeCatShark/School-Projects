@@ -611,8 +611,6 @@ void viewByCategory(Library& library){
 		}
 }
 
-
-
 void display(){
 	cout<<"\n===================="<<endl;
 	cout<<"[1] - Add Book"<<endl;
