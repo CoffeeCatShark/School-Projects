@@ -392,7 +392,6 @@ class Library{
 			}
 		}
 	}
-	buffer();
 };
 Library library;
 
