@@ -29,7 +29,6 @@ void buffer(){
 }
 
 string capital(string input){
-	string _input;
 	
     for (int i = 0; i < input.length(); i++)
         input[i] = toupper(input[i]);
