@@ -229,10 +229,10 @@ class Library{
 				books[i]->display();
 				foundBook = true;	
 			}
-			if(foundBook == false){
-				cout<<"Book Not Found"<<endl;
-				return false;
-			}
+		}
+		if(foundBook == false){
+			cout<<"Book Not Found"<<endl;
+			return false;
 		}
 		return true;
 	}
