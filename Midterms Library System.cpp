@@ -561,6 +561,7 @@ void deleteBook(Library& library){
 	getline(cin,input);
 	input = capital(input);
 	library.deleteBook(input);
+	buffer();
 }
 
 void editBook(Library& library){
