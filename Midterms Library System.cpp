@@ -149,11 +149,11 @@ class Library{
 				books[i]->display();
 				foundBook = true;
 			}
+			}
 			if(foundBook == false){
 				cout<<"Book Not Found"<<endl;
 				return;
-			}
-		}
+			}	
 	}
 	
 	void deleteBook(string x){
@@ -170,11 +170,14 @@ class Library{
 				key = books[i]->getID();
 				foundBook = true;
 			}
+		
+		}
 			if(foundBook == false){
 				cout<<"Book Not Found"<<endl;
 				return;
-			}
-		}
+				}
+		
+		
 			cout<<"Do you Want to Delete This Book? "<<endl;
 			cout<<"Input: ";
 			getline(cin,_input);
