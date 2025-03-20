@@ -453,7 +453,7 @@ string getValidID(Library& library){
 		}
 		
 		if(library.isDuplicateID(id)){
-			cout<<"Duplicate ID: Try Again"<<endl;			
+			cout<<"Duplicate ID. Try Again"<<endl;			
 		}
 		
 		else
