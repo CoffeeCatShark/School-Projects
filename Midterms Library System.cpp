@@ -13,6 +13,15 @@ bool isValidName(const string& name) {
     return !name.empty(); 
 }
 
+bool noSpace(const string& str) {
+	for(char ch : str){
+		if(ch == ' '){
+			return false;
+		}
+	}
+	return true;
+}
+
 bool isDigits(const string& str) {
     for (char ch : str) {
         if (!isdigit(ch)) {
@@ -314,6 +323,11 @@ class Library{
 			case 4:{
 				cout<<"Enter New Edition: ";
 				getline(cin,input);
+				while(input.empty()){
+					cout<<"Error: No Input Detected"<<endl;
+					cout<<"Input: ";
+					getline(cin,input);
+				}
 				books[key]->editEdition(capital(input));
 				cout<<endl<<"Edit Successful"<<endl;
 				break;
@@ -432,6 +446,12 @@ string getValidID(Library& library){
 			cout<<"No ID Input Detected: Try Again"<<endl;
 			continue;
 		}
+		
+		if(noSpace(id) == false){
+			cout<<"Error: Space Detected in ID Input. Try Again"<<endl;
+			continue;
+		}
+		
 		if(library.isDuplicateID(id)){
 			cout<<"Duplicate ID: Try Again"<<endl;			
 		}
@@ -507,6 +527,11 @@ string getEdition(){
 	while(!valid){
 		cout<<"Enter Book Edition: ";
 		getline(cin,edition);
+		while(edition.empty()){
+			cout<<"Error: No Input Detected."<<endl;
+			cout<<"Input: ";
+			getline(cin,edition);
+		}
 		edition = capital(edition);
 		
 		
