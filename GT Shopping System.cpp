@@ -27,7 +27,7 @@ bool noSpace(const string& str) {
 
 bool isDigits(const string& str) {
     for (char ch : str) {
-        if (!isdigit(ch)) {
+        if (!isdigit(ch) || ch == ' ') {
             return false;
         }
     }
@@ -248,7 +248,7 @@ int main() {
         int choice;
          while(!condition){
                 	getline(cin, input);
-                	if(isDigits(input) == false){
+                	if(isDigits(input) == false || input.empty()){
                 		cout<<"Error: Invalid Input. Try Again"<<endl;
                 		cout<<"Input: ";
                 		getline(cin,input);
@@ -349,7 +349,7 @@ int main() {
                 	while(!condition){
 	cout<<"Input: ";
 	getline(cin, input);
-	if(isDigits(input)){
+	if(isDigits(input) || input.empty()){
 		choice = stoi(input);
 		condition = true;
 		break;
