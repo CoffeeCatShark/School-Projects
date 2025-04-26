@@ -2,6 +2,7 @@
 #include <fstream>
 #include <string>
 using namespace std;
+
 int totalOrderCount;
 string append = to_string(totalOrderCount);
 string receipt = "receipt";
