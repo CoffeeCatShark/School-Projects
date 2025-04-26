@@ -309,7 +309,7 @@ int main() {
                 //cin >> qty;
 
                 if (qty <= 0 || selectedProduct->stockQuantity < qty) {
-                    cout << "Error: Quantity must not exceed "<<selectedProduct->stockQuantity;
+                    cout << "Error: Quantity must not exceed "<<selectedProduct->stockQuantity<<" or be below 1";
                     continue;
                 }
 
