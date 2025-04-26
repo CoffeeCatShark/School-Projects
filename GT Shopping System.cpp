@@ -16,7 +16,6 @@ bool isValidName(const string& name) {
     return !name.empty(); 
 }
 
-
 bool noSpace(const string& str) {
 	for(char ch : str){
 		if(ch == ' '){
