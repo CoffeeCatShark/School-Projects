@@ -1,5 +1,4 @@
 #include <iostream>
-#include <limits> 
 #include <fstream>
 #include <string>
 using namespace std;
@@ -293,7 +292,7 @@ int main() {
                 cout << "Enter quantity: ";
                          while(!condition){
                 	getline(cin, input);
-                	if(isDigits(input) == false){
+                	if(isDigits(input) == false || input.empty()){
                 		cout<<"Error: Invalid Input. Try Again"<<endl;
                 		cout<<"Input: ";
                 		getline(cin,input);
