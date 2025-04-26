@@ -223,11 +223,11 @@ GCash gcash;
 
 int main() {
 
-    Product p1("AAA", "Hammer       ", 25, 10);
-    Product p2("BBB", "Screwdriver  ", 15, 12);
-    Product p3("CCC", "Wrench       ", 30, 8);
-    Product p4("DDD", "Pliers       ", 20, 10);
-    Product p5("EEE", "Drill        ", 50, 5);
+    Product p1("AAA", "Hammer       ", 25, 100);
+    Product p2("BBB", "Screwdriver  ", 15, 100);
+    Product p3("CCC", "Wrench       ", 30, 100);
+    Product p4("DDD", "Pliers       ", 20, 100);
+    Product p5("EEE", "Drill        ", 50, 100);
     Product* products[] = { &p1, &p2, &p3, &p4, &p5 };
     int productCount = 5;
 
@@ -306,10 +306,8 @@ int main() {
                 
                 //cin >> qty;
 
-                if (cin.fail() || qty <= 0 || selectedProduct->stockQuantity < qty) {
-                    cin.clear();
-                    cin.ignore(numeric_limits<streamsize>::max(), '\n');
-                    cout << "\n[!] Invalid quantity!\n";
+                if (qty <= 0 || selectedProduct->stockQuantity < qty) {
+                    cout << "Error: Quantity must not exceed "<<selectedProduct->stockQuantity;
                     continue;
                 }
 
