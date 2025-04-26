@@ -75,6 +75,8 @@ public:
         for (int i = 0; i < itemCount; i++) {
             if (items[i]->productId == product->productId) {
                 quantities[i] += quantity;
+                amount = quantity * product->price;
+            	totalAmount += amount;
                 cout << "\n[+] Product quantity updated successfully!\n";
                 return true;
             }
@@ -316,7 +318,7 @@ int main() {
         }
         else if (choice == 2) {
             cart.displayCart();
-            cart.printTotalAmount();
+        	cart.printTotalAmount();
             try {
             	cart.getItemCount();
 			}
@@ -397,7 +399,7 @@ int main() {
             else for (int i = 1; i <= orderCount; i++) orderHistory[i].displayOrderDetails();
         }
         else if (choice == 4) {
-            cout << "\nThank you for shopping! Goodbye!\n";
+            cout << "\nExiting Program . . .\n";
             running = false;
         }
         else cout << "\n[!] Invalid choice!\n";
